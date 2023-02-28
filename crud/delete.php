@@ -5,8 +5,8 @@ if (!isset($_SESSION["loggedin"])) {
     header("location: index.php");
     exit;
 }
-if (isset($_GET["id"])) {
-    $blog_id = $_GET["id"];
+if (isset($_POST["id"])) {
+    $blog_id = $_POST["id"];
     
     $sql = "DELETE FROM blogs WHERE id = $blog_id";
     if (mysqli_query($conn, $sql)) {

@@ -9,11 +9,22 @@ $blogs = mysqli_query($conn, $sql); ?>
     <?php while ($blog = mysqli_fetch_assoc($blogs)) : ?>
         <?= $blog["username"] . " - title: " . $blog["title"] . " - content: " . $blog["content"] . " - time_created: " . $blog["time_created"] . "<br>"; ?>
         <div>
-            <?php if ($blog["user_id"] == $_SESSION["id"]) : ?>
+            <form action="crud/update.php" method="POST">
+                <input type="hidden" name="id" value="<?= $blog["id"] ?>">
+                <input type="hidden" name="title" value="<?= $blog["title"] ?>">
+                <input type="hidden" name="content" value="<?= $blog["content"] ?>">
 
-                <a href="crud/update.php?id=<?= $blog["id"] ?>" type="button"><input type="button" value="UPDATE" /></a>
-                <a href="crud/delete.php?id=<?= $blog["id"] ?>" type="button"><input type="button" value="DELETE" /></a>
-            <?php endif ?>
+                <?php if ($blog["user_id"] == $_SESSION["id"]) : ?>
+                    <button type="submit">UPDATE</button>
+                <?php endif ?>
+            </form>
+
+            <form action="crud/delete.php" method="POST">
+                <input type="hidden" name="id" value="<?= $blog["id"] ?>">
+                <?php if ($blog["user_id"] == $_SESSION["id"]) : ?>
+                    <button type="submit">DELETE</button>
+                <?php endif ?>
+            </form>
 
         </div>
     <?php endwhile ?>

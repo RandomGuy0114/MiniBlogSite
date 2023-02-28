@@ -10,17 +10,21 @@ if (!isset($_SESSION["loggedin"])) {
 require_once '../config/database.php';
 
 include('../header.php');
-$sql = "SELECT id, title, content FROM blogs WHERE id=?";
+if (isset($_POST["id"])) {
+    $blog_id = $_POST["id"];
+    $title = $_POST["title"];
+    $content = $_POST["content"];
 
+}
 ?>
 
-<form action="crud/update.php" method="post">
+<form action="upd.php" method="post">
+    <input type="hidden" name="id" value="<?= $blog_id ?>">
     <label for="title"> Title </label>
-    <input type="text" name="title" id="">
+    <input type="text" name="title" id="" value="<?= $title ?>">
     <label for="content"> Content</label>
-    <textarea name="content" rows="4" cols="50">
-</textarea>
-    <input type="submit" value="POST">
+    <textarea name="content" rows="4" cols="50"><?= $content ?></textarea>
+    <input type="submit" value="UPDATE">
 </form>
 
 <div>
