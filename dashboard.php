@@ -9,7 +9,7 @@ require_once 'config/database.php';
 
 include('header.php');
 ?>
-
+<?php include('crud/read.php'); ?>
 <div>
     <a href="dashboard_create.php" type="button"><input  type="button" value="CREATE NEW POST"/></a>
 </div>
