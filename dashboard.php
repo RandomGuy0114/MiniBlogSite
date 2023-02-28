@@ -6,15 +6,14 @@ if (!isset($_SESSION["loggedin"])) {
 }
 //Include config file
 require_once 'config/database.php';
+
+include('header.php');
 ?>
-<?php include('header.php'); ?>
-<?php
-if (isset($successMessage)) {
-    echo '<div >';
-    echo $successMessage;
-    echo '</div>';
-}
-?>
+
+<div>
+    <a href="dashboard_create.php" type="button"><input  type="button" value="CREATE NEW POST"/></a>
+</div>
+
 
 </body>
 
