@@ -11,7 +11,7 @@ $blogs = mysqli_query($conn, $sql); ?>
             <?php if ($blog["user_id"] == $_SESSION["id"]) : ?>
 
                 <a href="dashboard_UPDATE.php" type="button"><input type="button" value="UPDATE" /></a>
-                <a href="#" type="button"><input type="button" value="DELETE" /></a>
+                <a href="crud/delete.php?id=<?= $blog["id"] ?>" type="button"><input type="button" value="DELETE" /></a>
             <?php endif ?>
 
         </div>
