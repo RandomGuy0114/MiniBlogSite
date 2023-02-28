@@ -13,7 +13,7 @@ require_once '../config/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $sql = "SELECT id, email, password FROM users WHERE email = ?";
+    $sql = "SELECT id, email, username, password FROM users WHERE email = ?";
 
     if ($stmt = mysqli_prepare($conn, $sql)) {
 
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (mysqli_stmt_num_rows($stmt) ==  1) {
 
-                mysqli_stmt_bind_result($stmt, $id, $_POST["email"], $password);
+                mysqli_stmt_bind_result($stmt, $id, $_POST["email"],$username, $password);
 
                 if (mysqli_stmt_fetch($stmt)) {
                     if (password_verify($_POST["password"], $password)) {
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $id;
                         $_SESSION["email"] = $_POST["email"];
-
+                        $_SESSION["username"] = $username;
                         header("location: ../dashboard.php");
                         $successMessage = "Logged in!";
 
