@@ -11,5 +11,5 @@
         <a href="registration.php"><input type="button" value="Register"></a>
     </form>
 </body>
-
+<!-- test commit -->
 </html>
