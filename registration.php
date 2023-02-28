@@ -1,24 +1,7 @@
-<?php
-require_once 'config/database.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$username','$email','$password')";
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    // Close the database connection
-    $conn->close();
-}
-?>
 <?php include 'header.php';
 ?>
-<form action="registration.php" method="POST">
+<form action="register_login/register.php" method="POST">
     <label for="username"> Username </label>
     <input type="username" name="username" id="">
 
