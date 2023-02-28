@@ -18,7 +18,6 @@ $blogs = mysqli_query($conn, $sql); ?>
                     <button type="submit">UPDATE</button>
                 <?php endif ?>
             </form>
-
             <form action="crud/delete.php" method="POST">
                 <input type="hidden" name="id" value="<?= $blog["id"] ?>">
                 <?php if ($blog["user_id"] == $_SESSION["id"]) : ?>
