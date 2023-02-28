@@ -1,7 +1,7 @@
 
 <?php include 'header.php';
 ?>
-<form action="register_login/register.php" method="POST">
+<form action="auth/register.php" method="POST">
     <label for="username"> Username </label>
     <input type="username" name="username" id="">
 
