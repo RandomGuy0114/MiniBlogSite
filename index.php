@@ -1,4 +1,10 @@
-<?php include('config/database.php');?>
+<?php
+session_start();
+
+if (isset($_SESSION["loggedin"])) {
+    header("location: dashboard.php");
+    exit;
+}?>
 <?php include('header.php') ;
 ?>
     <form action="auth/login.php" method="post">
